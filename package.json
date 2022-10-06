@@ -1,18 +1,22 @@
 {
   "name": "cmfcucai",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "tsc",
-    "publishA":"tsc && publish"
+    "publishA": "tsc && publish"
   },
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
   "files": [
     "lib"
   ],
-  "keywords": ["imlv", "imlink","common-imlink"],
+  "keywords": [
+    "imlv",
+    "imlink",
+    "common-imlink"
+  ],
   "author": "vola <[vodeptraivl@gmail.com](mailto:vodeptraivl@gmail.com)>",
   "license": "MIT",
   "devDependencies": {

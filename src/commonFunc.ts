@@ -4,7 +4,7 @@ export class CommonFunction {
     }
 
     smallUUID() {
-        return 'xxxxxxxx'.replace(/[xy]/g, function (c) {
+        return 'xxxvxxxlxx'.replace(/[xy]/g, function (c) {
             var r = Math.random() * 16 | 0,
                 v = c == 'x' ? r : (r & 0x3 | 0x8);
             return v.toString(16);
@@ -96,5 +96,44 @@ export class CommonFunction {
     replaceAll(value: string, search: string, replaceWith: string) {
         let redg = new RegExp(search, "g")
         return (typeof (value) == "string") ? value.replace(redg, replaceWith) : value;
+    }
+
+    setCookie(nameCookie:string, data:string) {
+        // Build the expiration date string:
+        var expiration_date = new Date();
+        expiration_date.setFullYear(expiration_date.getFullYear() + 1);
+        document.cookie = nameCookie + "=" + data + ";path=/; expires=" + expiration_date.toUTCString();
+    }
+
+    getcookie(name:string) {
+        var match = document.cookie.match(new RegExp('(^| )' + name + '=([^;]+)'));
+        if (match) {
+            return match[2];
+        } else {
+            return null;
+        }
+    }
+
+    delAllCookie() {
+        var cookies = document.cookie.split(";");
+        for (var i = 0; i < cookies.length; i++) {
+            var cookie = cookies[i];
+            if (cookie.indexOf('lang') > -1 || cookie.indexOf('sysname') > -1 || cookie.indexOf('redirect') > -1) {
+                continue;
+            }
+            var eqPos = cookie.indexOf("=");
+            var name = eqPos > -1 ? cookie.substr(0, eqPos) : cookie;
+            document.cookie = name + "=delete;path=/;expires=Thu, 01 Jan 1970 00:00:00 GMT";
+        }
+    }
+
+    deleteCookie(nameCookie:string) {
+        var cookies = document.cookie.split(";");
+        for (var i = 0; i < cookies.length; i++) {
+            var cookie = cookies[i];
+            if (cookie.indexOf(nameCookie) > -1) {
+                document.cookie = nameCookie + "=delete;path=/;expires=Thu, 01 Jan 1970 00:00:00 GMT";
+            }
+        }
     }
 }

@@ -159,17 +159,20 @@ export class CommonFuncDate{
     
     roundDate(_date : any, end = false) {
         var date : Date =  new Date();
-        if (_date instanceof Date) {
-            date = _date;
-        } else if (typeof _date == 'number') {
-            _date = +_date;
-            date = new Date(_date);
-        } else if (typeof _date == 'string') {
-            if (!this.strIsDate(_date)) {
-                return 'invalid Date 1';
+        if(_date != null){
+            if (_date instanceof Date) {
+                date = _date;
+            } else if (typeof _date == 'number') {
+                _date = +_date;
+                date = new Date(_date);
+            } else if (typeof _date == 'string') {
+                if (!this.strIsDate(_date)) {
+                    return 'invalid Date 1';
+                }
+                date = new Date(_date);
             }
-            date = new Date(_date);
         }
+       
         date = new Date(date.setHours(0, 0, 0, 0));
         if (end) {
             date = new Date(date.setDate(date.getDate() + 1));
@@ -193,15 +196,17 @@ export class CommonFuncDate{
     
     addMonths(dateOrString : any,monthAdd : number,toString = false) {
         var date = new Date();
-        if (dateOrString instanceof Date) {
-            date = dateOrString;
-        } else if (typeof dateOrString == "number") {
-            date = new Date(dateOrString);
-        } else if (typeof dateOrString == "string") {
-            if (!this.strIsDate(dateOrString)) {
-                return 'invalid Date';
+        if(dateOrString != null){
+            if (dateOrString instanceof Date) {
+                date = dateOrString;
+            } else if (typeof dateOrString == "number") {
+                date = new Date(dateOrString);
+            } else if (typeof dateOrString == "string") {
+                if (!this.strIsDate(dateOrString)) {
+                    return 'invalid Date';
+                }
+                date = new Date(dateOrString);
             }
-            date = new Date(dateOrString);
         }
         date.setMonth(date.getMonth() + monthAdd);
         if(toString){
@@ -269,5 +274,10 @@ export class CommonFuncDate{
         }
         var year = date.getFullYear();
         return (((year % 4 === 0) && (year % 100 !== 0)) || (year % 400 === 0));
+    }
+
+    getUTCDate(){
+        let date = new Date()
+        return {year:date.getUTCFullYear(),month:date.getUTCMonth()+1,day:date.getUTCDate(),hour:date.getUTCHours(),minute : date.getUTCMinutes(),second:date.getUTCSeconds()}
     }
 }
