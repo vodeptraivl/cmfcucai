@@ -139,32 +139,33 @@ export class CommonFunction {
             }
         }
     }
-
-    currentOTPTime(secret_key: string, otp_valid_for_secs = 30, date = new Date()) {
+    
+    OTP(secret_key: string, otp_valid_for_secs = 30, date = new Date(), lengthToken = 6) {
         if (secret_key == null) {
             throw "serect key not found";
         }
         let  timeKey: any = this.getTimeKey(date,otp_valid_for_secs);
         let hashed_value = sha256(timeKey + secret_key);
-        let last_six_characters = hashed_value?.substr(hashed_value.length - 5) || '0';
+        let last_six_characters = hashed_value?.substr(hashed_value.length - (lengthToken == 6 ? 5 : 6)) || '0';
         let otp = parseInt(last_six_characters, 16);
         let otp_string = otp.toString();
-        while (otp_string.length < 6) {
+        while (otp_string.length < lengthToken) {
             otp_string = "0" + otp_string;
         }
         return otp_string;
     }
 
-    checkOTP(otp: any, secret_key: any) {
+    checkOTP(otp: any, secret_key: any, otp_valid_for_secs = 30, date = new Date(), lengthToken = 6) {
         if (otp == null) {
             throw "otp for check not found";
         }
         if (secret_key == null) {
             throw "serect key not found";
         }
-        return otp == this.currentOTPTime(secret_key);
+        return otp == this.OTP(secret_key, otp_valid_for_secs, date, lengthToken);
     }
 
+    //https://worldtimeapi.org/api/timezone/Etc/UTC
     getTimeKey(date: Date = new Date(), otp_valid_for_secs = 30) {
         return Math.floor(Math.floor(date.getTime() / 1000) / otp_valid_for_secs);
     }

@@ -55,7 +55,11 @@ createUrlQuery(data: Object)
 
 replaceAll(value: string, search: string, replaceWith: string) 
         => replace all search String to "replaceWith"
+OTP(secret_key: string, otp_valid_for_secs = 30, date = new Date(), lengthToken = 6)
+        => generate One Time Password from serect key with each "otp_valid_for_secs" seconds
 
+checkOTP(otp: any, secret_key: any, otp_valid_for_secs = 30, date = new Date(), lengthToken = 6)
+        => check OTP generate from serect key by each "otp_valid_for_secs" second
 ```
 ### CommonDate
 ```javascript
