@@ -113,33 +113,28 @@ export class CommonFuncDate{
         return false;
     }
     
-    getDateString(dayFormat : string = "") {
-        try {
-            let date = new Date();
-            if (dayFormat != "") {
-                if (this.strIsDate(dayFormat)) {
-                    date = new Date(dayFormat);
-                } else {
-                    return;
-                }
-            }
-            let year = date.getFullYear();
-            let month = (date.getMonth() + 1) + "";
-            month = (month + "").length == 1 ? "0" + month : month;
-            let day = date.getDate() + "";
-            day = (day + "").length == 1 ? "0" + day : day;
-            let dayOfWeek = date.getDay();
-            return {
-                year,
-                month,
-                day,
-                dayOfWeek
-            }
-        } catch (e) {
-            return null;
-        }
-    
-    }
+    getDateString (pattern: string = "YYYY/MM/DD", date : any, utc = false) {
+        var dateRegex = /(?=(YYYY|YY|MM|DD|HH|mm|ss|ms))\1([:\/]*)/g;
+        var timespan : any = {
+          YYYY: ['getFullYear', 4],
+          YY: ['getFullYear', 2],
+          MM: ['getMonth', 2, 1], // getMonth is zero-based, thus the extra increment field
+          DD: ['getDate', 2],
+          HH: ['getHours', 2],
+          mm: ['getMinutes', 2],
+          ss: ['getSeconds', 2],
+          ms: ['getMilliseconds', 3]
+        };
+          if (!date) date = new Date();
+          return pattern.replace(dateRegex, function(match, key, rest) {
+            var args = timespan[key];
+            var name = args[0];
+            var chars = args[1];
+            if (utc === true) name = 'getUTC' + name.slice(3);
+            var val = '00' + String(date[name]() + (args[2] || 0));
+            return val.slice(-chars) + (rest || '');
+          });
+    };
     
     getDayBetween2Date(date1 : any, date2 : any) {
         if (date1 instanceof Date) {} else {

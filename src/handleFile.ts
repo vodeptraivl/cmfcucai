@@ -41,7 +41,7 @@ export class HandleFile {
         this.saveFile(fileName, dataRow, "data:text/plain;charset=utf-8,")
     }
 
-    saveFile(fileName, data, type) {
+    saveFile(fileName:string, data:string, type:string) {
         if (navigator["msSaveOrOpenBlob"]) {
             var blob = new Blob([data], { type: "text/csv;charset=utf-8;" });
             navigator["msSaveOrOpenBlob"](blob, fileName);
@@ -83,7 +83,7 @@ export class HandleFile {
         };
     }
 
-    svgToFile(svg: any, fileName = "unamed.svg", callBack = () => { }) {
+    svgToFile(svg: any, fileName = "unamed.png", callBack = () => { }) {
         if (svg == null) {
             throw "SVG is NULL !!";
         };
@@ -102,10 +102,6 @@ export class HandleFile {
     svgDataURL(svg: any) {
         var svgAsXML = (new XMLSerializer).serializeToString(svg);
         return "data:image/svg+xml," + encodeURIComponent(svgAsXML);
-    }
-
-    uploadFileLarge(){
-
     }
 
 }

@@ -1,4 +1,7 @@
+import { sha256 } from 'js-sha256';
+
 export class CommonFunction {
+    key = "vola2022";
     emailValidate(email: string): boolean {
         return new RegExp(/^(?:(?:[\w`~!#$%^&*\-=+;:{}'|,?\/]+(?:(?:\.(?:"(?:\\?[\w`~!#$%^&*\-=+;:{}'|,?\/\.()<>\[\] @]|\\"|\\\\)*"|[\w`~!#$%^&*\-=+;:{}'|,?\/]+))*\.[\w`~!#$%^&*\-=+;:{}'|,?\/]+)?)|(?:"(?:\\?[\w`~!#$%^&*\-=+;:{}'|,?\/\.()<>\[\] @]|\\"|\\\\)+"))@(?:[a-zA-Z\d\-]+(?:\.[a-zA-Z\d\-]+)*|\[\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}\])$/).test(email);
     }
@@ -98,14 +101,14 @@ export class CommonFunction {
         return (typeof (value) == "string") ? value.replace(redg, replaceWith) : value;
     }
 
-    setCookie(nameCookie:string, data:string) {
+    setCookie(nameCookie: string, data: string) {
         // Build the expiration date string:
         var expiration_date = new Date();
         expiration_date.setFullYear(expiration_date.getFullYear() + 1);
         document.cookie = nameCookie + "=" + data + ";path=/; expires=" + expiration_date.toUTCString();
     }
 
-    getcookie(name:string) {
+    getcookie(name: string) {
         var match = document.cookie.match(new RegExp('(^| )' + name + '=([^;]+)'));
         if (match) {
             return match[2];
@@ -127,7 +130,7 @@ export class CommonFunction {
         }
     }
 
-    deleteCookie(nameCookie:string) {
+    deleteCookie(nameCookie: string) {
         var cookies = document.cookie.split(";");
         for (var i = 0; i < cookies.length; i++) {
             var cookie = cookies[i];
@@ -136,4 +139,34 @@ export class CommonFunction {
             }
         }
     }
+
+    currentOTPTime(secret_key: string, otp_valid_for_secs = 30, date = new Date()) {
+        if (secret_key == null) {
+            throw "serect key not found";
+        }
+        let  timeKey: any = this.getTimeKey(date,otp_valid_for_secs);
+        let hashed_value = sha256(timeKey + secret_key);
+        let last_six_characters = hashed_value?.substr(hashed_value.length - 5) || '0';
+        let otp = parseInt(last_six_characters, 16);
+        let otp_string = otp.toString();
+        while (otp_string.length < 6) {
+            otp_string = "0" + otp_string;
+        }
+        return otp_string;
+    }
+
+    checkOTP(otp: any, secret_key: any) {
+        if (otp == null) {
+            throw "otp for check not found";
+        }
+        if (secret_key == null) {
+            throw "serect key not found";
+        }
+        return otp == this.currentOTPTime(secret_key);
+    }
+
+    getTimeKey(date: Date = new Date(), otp_valid_for_secs = 30) {
+        return Math.floor(Math.floor(date.getTime() / 1000) / otp_valid_for_secs);
+    }
+
 }
