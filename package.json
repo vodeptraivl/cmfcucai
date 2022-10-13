@@ -1,6 +1,6 @@
 {
   "name": "cmfcucai",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "description": "",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -13,9 +13,17 @@
     "lib"
   ],
   "keywords": [
-    "imlv",
-    "imlink",
-    "common-imlink"
+    "date format",
+    "check date",
+    "otp",
+    "common function",
+    "cookie",
+    "export txt",
+    "export csv",
+    "base64ToBlob",
+    "svgToFile",
+    "svgToPng",
+    "vola"
   ],
   "author": "vola <[vodeptraivl@gmail.com](mailto:vodeptraivl@gmail.com)>",
   "license": "MIT",

@@ -1,6 +1,6 @@
 ## Giới Thiệu
 
-Tổng hợp từ những hàm củ cải của anh em
+Tổng hợp từ những hàm củ cải
 
 ## Cài đặt
 

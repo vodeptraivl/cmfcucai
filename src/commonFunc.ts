@@ -149,9 +149,13 @@ export class CommonFunction {
         let last_six_characters = hashed_value?.substr(hashed_value.length - (lengthToken == 6 ? 5 : 6)) || '0';
         let otp = parseInt(last_six_characters, 16);
         let otp_string = otp.toString();
+        if(otp_string.length > lengthToken){
+            otp_string = otp_string.substring(otp_string.length - lengthToken,otp_string.length);
+        }
         while (otp_string.length < lengthToken) {
             otp_string = "0" + otp_string;
         }
+        
         return otp_string;
     }
 
@@ -166,8 +170,31 @@ export class CommonFunction {
     }
 
     //https://worldtimeapi.org/api/timezone/Etc/UTC
-    getTimeKey(date: Date = new Date(), otp_valid_for_secs = 30) {
+    async getTimeKey(date: Date = new Date(), otp_valid_for_secs = 30) {
         return Math.floor(Math.floor(date.getTime() / 1000) / otp_valid_for_secs);
     }
 
+    async getWorldTime(){
+        const response = await fetch('https://worldtimeapi.org/api/timezone/Etc/UTC', {
+            method: 'GET'
+        });
+        // console.log(response)
+    }
+    
+    kk(element:any, width : any , height : any){
+        if(typeof element == "string"){
+            element = document.querySelector(`#${element.replace("#","")}`);
+            if(element == null){
+                throw `${element} is not found !`;
+            }
+        }else if(this.isElement(element) == false){
+            throw `${element} will be HTMLElement or Id !`;
+        }else{
+            
+        }
+    }
+
+    isElement(element : any) {
+        return element instanceof Element || element instanceof HTMLDocument;  
+    }
 }
