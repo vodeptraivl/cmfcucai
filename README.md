@@ -1,17 +1,16 @@
-## Giới Thiệu
+## Intro
 
-Tổng hợp từ những hàm củ cải
+hmmm ..... 
 
-## Cài đặt
+## Setup
 
 ```shell
 $ npm install cmfcucai@latest
 ```
 
-## Import vào sử dụng
+## Import
 
 ```typescript
-Sau khi cài đặt thì import vào như phía dưới
 
 import { 
     CommonFunc,
@@ -19,13 +18,10 @@ import {
     CommonFile 
     } from 'cmfcucai';
 
-Gồm có 3 module chính.
-
 ```
 
 ### CommonFunc
 ```javascript
-Module những hàm hay dùng.
 deleteCookie,
 delAllCookie,
 getcookie,
@@ -63,7 +59,6 @@ checkOTP(otp: any, secret_key: any, otp_valid_for_secs = 30, date = new Date(), 
 ```
 ### CommonDate
 ```javascript
-Module những hàm hay dùng cho Date.
 
 getDateString,
 isLeapYear(dateOrString : Date)
@@ -90,150 +85,6 @@ roundDate(_date : any, end = false)
 getDayBetween2Date,
 isDateWithFormat(value: string, pattern = "YYYY/MM/DD"): boolean
         => check value is date with pattern default is "YYYY/MM/DD"
-           pattern {
-                "YYYY/MM/DD","YYYY.MM.DD","YYYY-MM-DD","YYYYMMDD",
-                "DD/MM/YYYY","DD.MM.YYYY","DD-MM-YYYY","DDMMYYYY",
-                "MMDDYYYY", "MM/DD/YYYY","MM-DD-YYYY","MM.DD.YYYY",
-                "YYYYDDMM","YYYY/DD/MM","YYYY-DD-MM","YYYY.DD.MM",
-                "YYYYMMDD HH,MM,SS","YYYYMMDDHH,MM,SS","YYYYMMDD HHMISS","YYYYMMDDHHMISS",
-                "YYYYMMDD HH,MM",
-                "YYYYMMDDHH,MM",
-                "YYYYMMDD HHMI",
-                "YYYYMMDDHHMI",
-                "YYYY/MM/DD HH,MM,SS",
-                "YYYY/MM/DDHH,MM,SS",
-                "YYYY/MM/DD HHMISS",
-                "YYYY/MM/DDHHMISS",
-                "YYYY/MM/DD HH,MM",
-                "YYYY/MM/DDHH,MM",
-                "YYYY/MM/DD HHMI",
-                "YYYY/MM/DDHHMI",
-                "YYYY-MM-DD HH,MM,SS",
-                "YYYY-MM-DDHH,MM,SS",
-                "YYYY-MM-DD HHMISS",
-                "YYYY-MM-DDHHMISS",
-                "YYYY-MM-DD HH,MM",
-                "YYYY-MM-DDHH,MM",
-                "YYYY-MM-DD HHMI",
-                "YYYY-MM-DDHHMI",
-                "YYYY.MM.DD HH,MM,SS",
-                "YYYY.MM.DDHH,MM,SS",
-                "YYYY.MM.DD HHMISS",
-                "YYYY.MM.DDHHMISS",
-                "YYYY.MM.DD HH,MM",
-                "YYYY.MM.DDHH,MM",
-                "YYYY.MM.DD HHMI",
-                "YYYY.MM.DDHHMI",
-                "YYYYDDMM HH,MM,SS",
-                "YYYYDDMMHH,MM,SS",
-                "YYYYDDMM HHMISS",
-                "YYYYDDMMHHMISS",
-                "YYYYDDMM HH,MM",
-                "YYYYDDMMHH,MM",
-                "YYYYDDMM HHMI",
-                "YYYYDDMMHHMI",
-                "YYYY/DD/MM HH,MM,SS",
-                "YYYY/DD/MMHH,MM,SS",
-                "YYYY/DD/MM HHMISS",
-                "YYYY/DD/MMHHMISS",
-                "YYYY/DD/MM HH,MM",
-                "YYYY/DD/MMHH,MM",
-                "YYYY/DD/MM HHMI",
-                "YYYY/DD/MMHHMI",
-                "YYYY-DD-MM HH,MM,SS",
-                "YYYY-DD-MMHH,MM,SS",
-                "YYYY-DD-MM HHMISS",
-                "YYYY-DD-MMHHMISS",
-                "YYYY-DD-MM HH,MM",
-                "YYYY-DD-MMHH,MM",
-                "YYYY-DD-MM HHMI",
-                "YYYY-DD-MMHHMI",
-                "YYYY.DD.MM HH,MM,SS",
-                "YYYY.DD.MMHH,MM,SS",
-                "YYYY.DD.MM HHMISS",
-                "YYYY.DD.MMHHMISS",
-                "YYYY.DD.MM HH,MM",
-                "YYYY.DD.MMHH,MM",
-                "YYYY.DD.MM HHMI",
-                "YYYY.DD.MMHHMI",
-                "DDMMYYYY HH,MM,SS",
-                "DDMMYYYYHH,MM,SS",
-                "DDMMYYYY HHMISS",
-                "DDMMYYYYHHMISS",
-                "DDMMYYYY HH,MM",
-                "DDMMYYYYHH,MM",
-                "DDMMYYYY HHMI",
-                "DDMMYYYYHHMI",
-                "DD/MM/YYYY HH,MM,SS",
-                "DD/MM/YYYYHH,MM,SS",
-                "DD/MM/YYYY HHMISS",
-                "DD/MM/YYYYHHMISS",
-                "DD/MM/YYYY HH,MM",
-                "DD/MM/YYYYHH,MM",
-                "DD/MM/YYYY HHMI",
-                "DD/MM/YYYYHHMI",
-                "DD-MM-YYYY HH,MM,SS",
-                "DD-MM-YYYYHH,MM,SS",
-                "DD-MM-YYYY HHMISS",
-                "DD-MM-YYYYHHMISS",
-                "DD-MM-YYYY HH,MM",
-                "DD-MM-YYYYHH,MM",
-                "DD-MM-YYYY HHMI",
-                "DD-MM-YYYYHHMI",
-                "DD.MM.YYYY HH,MM,SS",
-                "DD.MM.YYYYHH,MM,SS",
-                "DD.MM.YYYY HHMISS",
-                "DD.MM.YYYYHHMISS",
-                "DD.MM.YYYY HH,MM",
-                "DD.MM.YYYYHH,MM",
-                "DD.MM.YYYY HHMI",
-                "DD.MM.YYYYHHMI",
-                "MMDDYYYY HH,MM,SS",
-                "MMDDYYYYHH,MM,SS",
-                "MMDDYYYY HHMISS",
-                "MMDDYYYYHHMISS",
-                "MMDDYYYY HH,MM",
-                "MMDDYYYYHH,MM",
-                "MMDDYYYY HHMI",
-                "MMDDYYYYHHMI",
-                "MM/DD/YYYY HH,MM,SS",
-                "MM/DD/YYYYHH,MM,SS",
-                "MM/DD/YYYY HHMISS",
-                "MM/DD/YYYYHHMISS",
-                "MM/DD/YYYY HH,MM",
-                "MM/DD/YYYYHH,MM",
-                "MM/DD/YYYY HHMI",
-                "MM/DD/YYYYHHMI",
-                "MM-DD-YYYY HH,MM,SS",
-                "MM-DD-YYYYHH,MM,SS",
-                "MM-DD-YYYY HHMISS",
-                "MM-DD-YYYYHHMISS",
-                "MM-DD-YYYY HH,MM",
-                "MM-DD-YYYYHH,MM",
-                "MM-DD-YYYY HHMI",
-                "MM-DD-YYYYHHMI",
-                "MM.DD.YYYY HH,MM,SS",
-                "MM.DD.YYYYHH,MM,SS",
-                "MM.DD.YYYY HHMISS",
-                "MM.DD.YYYYHHMISS",
-                "MM.DD.YYYY HH,MM",
-                "MM.DD.YYYYHH,MM",
-                "MM.DD.YYYY HHMI",
-                "MM.DD.YYYYHHMI",
-                "MMDD",
-                "MM/DD",
-                "MM-DD",
-                "MM.DD",
-                "DDMM",
-                "DD/MM",
-                "DD-MM",
-                "DD.MM",
-                "MDD",
-                "M/DD",
-                "M-DD",
-                "M.DD",
-                "DDM","DD/M","DD-M","DD.M"
-           }
 
 getUTCDate
         => return {year,month,day,hour,minute,second} with UTC Time Zone
@@ -287,6 +138,20 @@ svgToFile => export SVGElement to file svg
         (svg: any, fileName = "unamed.svg", callBack = () => { })
         svg = document.querySelector("svg") or  @ViewChild("", { static true }) svg!: HTMLElement
         fileName default is "unamed.svg"
+
+
+sliceFile(file: File | any , splitUnit: number = 10)
+        =>
+        slice file to multiple package with 10mb by default
+        return Array of {
+                         uuid: string;
+                         originalFileName: string;
+                         fileSize: number;
+                         fileB64: string;
+                         fileSlice : Blob;
+                        }
+file2Base64(file: Blob | File)
+        => convert file to base64 string
 ```
 update late
 

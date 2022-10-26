@@ -197,4 +197,30 @@ export class CommonFunction {
     isElement(element : any) {
         return element instanceof Element || element instanceof HTMLDocument;  
     }
+
+    moveKeyIndex(iFrom : number, iTo : number , list : any, indexKey : string, callbackFn = () => {}) {
+        if (iFrom < iTo ) {
+            list[iFrom][indexKey] = iTo;
+          for (let i = 0; i < list.length; i++) {
+            if (i > iFrom && i <= iTo) {
+                list[i][indexKey] -= 1;
+            }
+          }
+        } else {
+          for (let i = 0; i < list.length; i++) {
+            if (i >= iTo && i < iFrom) {
+                list[i][indexKey] += 1;
+            }
+          }
+          list[iFrom][indexKey] = iTo;
+        }
+        list.sort((a : any, b : any) => a[indexKey] - b[indexKey]);
+        if(callbackFn) callbackFn();
+      }
+
+    swapIndex(iFrom : number, iTo : number , list : any, callbackFn = () => {}) {
+        let itemFrom = JSON.parse(JSON.stringify(list[iFrom]));
+        list[iFrom] =  JSON.parse(JSON.stringify(list[iTo]));
+        list[iTo] = itemFrom;
+    }
 }
