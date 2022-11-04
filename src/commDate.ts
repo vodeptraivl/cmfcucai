@@ -141,7 +141,7 @@ export class CommonFuncDate {
         "M/DD",
         "M-DD",
         "M.DD",
-        "DDM","DD/M","DD-M","DD.M"
+        "DDM","DD/M","DD-M","DD.M","MD","M/D","M.D","DM","D/M","D.M","M-D","D-M"
     ]
     isDateWithFormat(value: string, pattern = "YYYY/MM/DD") {
         if (value == null || value == "" ) return;
@@ -334,9 +334,24 @@ export class CommonFuncDate {
                     return (new RegExp(/^([123]0|[012][1-9]|31)[-](0[1-9]|1[012])$/g).test(value));
                 case "DD.MM":
                     return (new RegExp(/^([123]0|[012][1-9]|31)[.](0[1-9]|1[012])$/g).test(value));
-
                 case "MDD":
                     return (new RegExp(/^([1-9])([123]0|[012][1-9]|31)$/g).test(value));
+                case "MD":
+                    return (new RegExp(/^([1-9])([1-9])$/g).test(value));
+                case "M/D":
+                    return (new RegExp(/^([1-9])[/]([1-9])$/g).test(value));
+                case "M.D":
+                    return (new RegExp(/^([1-9])[.]([1-9])$/g).test(value));
+                case "M.D":
+                    return (new RegExp(/^([1-9])[-]([1-9])$/g).test(value));
+                case "DM":
+                    return (new RegExp(/^([1-9])([1-9])$/g).test(value));
+                case "D/M":
+                    return (new RegExp(/^([1-9])[/]([1-9])$/g).test(value));
+                case "D.M":
+                    return (new RegExp(/^([1-9])[.]([1-9])$/g).test(value));
+                case "D.M":
+                    return (new RegExp(/^([1-9])[-]([1-9])$/g).test(value));
                 case "M/DD":
                     return (new RegExp(/^([1-9])[/]([123]0|[012][1-9]|31)$/g).test(value));
                 case "M-DD":
@@ -359,7 +374,6 @@ export class CommonFuncDate {
 
     extracDateStr(value: string) {
         if (value == null || value == "" ) return;
-
         for(let i = 0 ; i < this.patternDate.length; i++){
             if(this.isDateWithFormat(value,this.patternDate[i])){
                 let res = {
@@ -372,35 +386,28 @@ export class CommonFuncDate {
                     minute:'',
                     second:''
                 }
-
                 let iYear = this.patternDate[i].indexOf('YYYY'),
                 iMonth = this.patternDate[i].indexOf('MM'),
                 iM = this.patternDate[i].indexOf('M'),
                 iday = this.patternDate[i].indexOf('DD'),
+                iD = this.patternDate[i].indexOf('D'),
                 ihour = this.patternDate[i].indexOf('HH'),
                 iminute = this.patternDate[i].indexOf('MI'),
                 isecond = this.patternDate[i].indexOf('SS');
-                if(iYear > -1){
-                    res.year = value.substring(iYear,iYear+4);
+                if(iYear > -1) res.year = value.substring(iYear,iYear+4);
+                if(iMonth > -1) res.month = value.substring(iMonth,iMonth+2);
+                if(iday > -1) res.day = value.substring(iday,iday+2);
+                if(ihour > -1) res.hour = value.substring(ihour,ihour+2);
+                if(iminute > -1) res.minute = value.substring(iminute,iminute+2);
+                if(isecond > -1) res.second = value.substring(isecond,isecond+2);
+                if(iMonth == -1 && iM > -1) res.month = '0'+value.substring(iM,iM+1);
+                if(iday == -1 && iD > -1) res.day = '0'+value.substring(iD,iD+1);
+                if(res.month != "" && res.month == '02'){
+                    if(res.day > "29" && res.year != "") return false;
+                    if(res.year != "" && !this.isLeapYear(res.year) && res.day == "29") return false;
+                    if(res.day > "28") return false;
                 }
-                if(iMonth > -1){
-                    res.month = value.substring(iMonth,iMonth+2);
-                }
-                if(iday > -1){
-                    res.day = value.substring(iday,iday+2);
-                }
-                if(ihour > -1){
-                    res.hour = value.substring(ihour,ihour+2);
-                }
-                if(iminute > -1){
-                    res.minute = value.substring(iminute,iminute+2);
-                }
-                if(isecond > -1){
-                    res.second = value.substring(isecond,isecond+2);
-                }
-                if(iMonth == -1 && iM > -1){
-                    res.month = '0'+value.substring(iM,iM+1);
-                }
+                if(["04","06","09","11","4","6","9",4,6,9,11].indexOf(res.month) > -1 && ["31",31].indexOf(res.day) > -1) return false;
                 return res;
             }
         }
@@ -544,25 +551,12 @@ export class CommonFuncDate {
         return [31, (this.isLeapYear(date) ? 29 : 28), 31, 30, 31, 30, 31, 31, 30, 31, 30, 31][month];
     };
 
-    isLeapYear(dateOrString: Date) {
-        var date = new Date();
-        if (dateOrString) {
-            if (dateOrString instanceof Date) {
-                date = dateOrString;
-            } else if (typeof dateOrString == "number") {
-                date = new Date(dateOrString);
-            } else if (typeof dateOrString == "string") {
-                if (!this.extracDateStr(dateOrString)) {
-                    return 'invalid Date';
-                }
-                date = new Date(dateOrString);
-            }
+    isLeapYear(year: any) {
+        if(isNaN(Number(year))){
+            throw 'not year !';
         }
-        else {
-            date = new Date();
-        }
-        var year = date.getFullYear();
-        return (((year % 4 === 0) && (year % 100 !== 0)) || (year % 400 === 0));
+        
+        return (((+year % 4 === 0) && (+year % 100 !== 0)) || (+year % 400 === 0));
     }
 
     getUTCDate() {
@@ -571,7 +565,7 @@ export class CommonFuncDate {
     }
 
     dateStrFormat(date: string, pattern = "mm/dd") {
-        if(this.patternDate.indexOf(pattern) == -1){
+        if(this.patternDate.indexOf(pattern.toUpperCase()) == -1){
             throw 'dont suport this pattern !';
         }
         if (date == null || date == "") {

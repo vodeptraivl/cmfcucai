@@ -223,4 +223,22 @@ export class CommonFunction {
         list[iFrom] =  JSON.parse(JSON.stringify(list[iTo]));
         list[iTo] = itemFrom;
     }
+
+    uniqueStrArr(data : string []){
+        if(data.length > 0){
+            return data.filter((v, i, a) => a.indexOf(v) === i);
+        }
+        return data;
+    }
+
+    extractUniqueKey(data : object[],key : string,join? : string){
+        if(data.length > 0){
+            let res = data.map((x : any)=>x[key]).filter((v, i, a) => a.indexOf(v) === i);
+            if(join != null){
+                return (res || []).join(join);
+            }
+            return res;
+        }
+        return data;
+    }
 }

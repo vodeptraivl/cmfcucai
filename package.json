@@ -1,6 +1,6 @@
 {
   "name": "cmfcucai",
-  "version": "1.1.2",
+  "version": "1.1.8",
   "description": "",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -31,6 +31,8 @@
     "slice file",
     "split file",
     "file to base64",
+    "unique array string",
+    "extract element from object to array",
     "vola"
   ],
   "author": "vola <[vodeptraivl@gmail.com](mailto:vodeptraivl@gmail.com)>",

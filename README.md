@@ -56,6 +56,20 @@ OTP(secret_key: string, otp_valid_for_secs = 30, date = new Date(), lengthToken 
 
 checkOTP(otp: any, secret_key: any, otp_valid_for_secs = 30, date = new Date(), lengthToken = 6)
         => check OTP generate from serect key by each "otp_valid_for_secs" second
+
+extractUniqueKey(data : object[],key : string,join = null)
+        => input : data = [
+                {a:1 , b:2 , c: 3},
+                {a:1 , b:2 , c: 3},
+                ...
+        ]
+        key = 'c'
+        return [3,3]
+        if join is not null 
+                join = ','
+                return '3,3'
+uniqueStrArr(data : string[])
+        => input = ['1','2','3','1'] return ['1','2','3']
 ```
 ### CommonDate
 ```javascript
