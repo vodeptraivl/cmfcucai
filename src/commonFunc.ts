@@ -241,4 +241,19 @@ export class CommonFunction {
         }
         return data;
     }
+
+    distributeObjectBykey(data : object[],key : string){
+        if(data.length > 0){
+            let res : any = {};
+            let keys = data.map((x : any)=>x[key]).filter((v, i, a) => a.indexOf(v) === i);
+            if(keys.length > 0){
+                keys = keys.sort((a, b) => a - b);
+                for(let i = 0;i <keys.length;i++){
+                    res[keys[i]] = data.filter((x : any)=>{return x[key[i]] == keys[i]})
+                }
+                return res;
+            }
+        }
+        return data;
+    }
 }
