@@ -257,7 +257,7 @@ export class CommonFunction {
         return data;
     }
 
-    isFileType(file: File , type :string){
+    isFileType(file: File | any , type :string){
         return new RegExp(`^.*(${type})$`).test(file.name);
     }
 }
