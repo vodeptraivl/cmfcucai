@@ -102,7 +102,6 @@ export class CommonFunction {
     }
 
     setCookie(nameCookie: string, data: string) {
-        // Build the expiration date string:
         var expiration_date = new Date();
         expiration_date.setFullYear(expiration_date.getFullYear() + 1);
         document.cookie = nameCookie + "=" + data + ";path=/; expires=" + expiration_date.toUTCString();
@@ -110,11 +109,7 @@ export class CommonFunction {
 
     getcookie(name: string) {
         var match = document.cookie.match(new RegExp('(^| )' + name + '=([^;]+)'));
-        if (match) {
-            return match[2];
-        } else {
-            return null;
-        }
+        return (match) ? match[2] : null;
     }
 
     delAllCookie() {
@@ -134,9 +129,8 @@ export class CommonFunction {
         var cookies = document.cookie.split(";");
         for (var i = 0; i < cookies.length; i++) {
             var cookie = cookies[i];
-            if (cookie.indexOf(nameCookie) > -1) {
-                document.cookie = nameCookie + "=delete;path=/;expires=Thu, 01 Jan 1970 00:00:00 GMT";
-            }
+            if (cookie.indexOf(nameCookie) > -1) document.cookie = nameCookie + "=delete;path=/;expires=Thu, 01 Jan 1970 00:00:00 GMT";
+            
         }
     }
     
@@ -201,18 +195,14 @@ export class CommonFunction {
     moveKeyIndex(iFrom : number, iTo : number , list : any, indexKey : string, callbackFn = () => {}) {
         if (iFrom < iTo ) {
             list[iFrom][indexKey] = iTo;
-          for (let i = 0; i < list.length; i++) {
-            if (i > iFrom && i <= iTo) {
-                list[i][indexKey] -= 1;
+            for (let i = 0; i < list.length; i++) {
+                if (i > iFrom && i <= iTo) list[i][indexKey] -= 1;
             }
-          }
         } else {
-          for (let i = 0; i < list.length; i++) {
-            if (i >= iTo && i < iFrom) {
-                list[i][indexKey] += 1;
+            for (let i = 0; i < list.length; i++) {
+                if (i >= iTo && i < iFrom) list[i][indexKey] += 1;
             }
-          }
-          list[iFrom][indexKey] = iTo;
+            list[iFrom][indexKey] = iTo;
         }
         list.sort((a : any, b : any) => a[indexKey] - b[indexKey]);
         if(callbackFn) callbackFn();
@@ -225,18 +215,14 @@ export class CommonFunction {
     }
 
     uniqueStrArr(data : string []){
-        if(data.length > 0){
-            return data.filter((v, i, a) => a.indexOf(v) === i);
-        }
+        if(data.length > 0) return data.filter((v, i, a) => a.indexOf(v) === i);
         return data;
     }
 
     extractUniqueKey(data : object[],key : string,join? : string){
         if(data.length > 0){
             let res = data.map((x : any)=>x[key]).filter((v, i, a) => a.indexOf(v) === i);
-            if(join != null){
-                return (res || []).join(join);
-            }
+            if(join != null) return (res || []).join(join);
             return res;
         }
         return data;
@@ -248,9 +234,7 @@ export class CommonFunction {
             let keys = data.map((x : any)=>x[key]).filter((v, i, a) => a.indexOf(v) === i);
             if(keys.length > 0){
                 keys = keys.sort((a, b) => a - b);
-                for(let i = 0;i <keys.length;i++){
-                    res[keys[i]] = data.filter((x : any)=>{return x[key[i]] == keys[i]})
-                }
+                for(let i = 0;i <keys.length;i++){res[keys[i]] = data.filter((x : any)=>{return x[key[i]] == keys[i]})}
                 return res;
             }
         }
