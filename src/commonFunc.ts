@@ -15,7 +15,7 @@ export class CommonFunction {
     }
 
     UUIDV4() {
-        return 'xxxVxxxxx-xxOxx-Lxxx-Axxx-xxxVxxxxxxxxLx'.replace(/[xy]/g, (c) => {
+        return 'xxxxx-xxxxx-xxxxx-xxxxx'.replace(/[xy]/g, (c) => {
             var r = Math.random() * 16 | 0,
                 v = c == 'x' ? r : (r & 0x3 | 0x8);
             return v.toString(16);
@@ -232,6 +232,7 @@ export class CommonFunction {
         if(data.length > 0){
             let res : any = {};
             let keys = data.map((x : any)=>x[key]).filter((v, i, a) => a.indexOf(v) === i);
+            res.key = keys;
             if(keys.length > 0){
                 keys = keys.sort((a, b) => a - b);
                 for(let i = 0;i <keys.length;i++){res[keys[i]] = data.filter((x : any)=>{return x[key[i]] == keys[i]})}
