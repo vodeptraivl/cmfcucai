@@ -53,23 +53,14 @@ export class CommonFunction {
         if (value.indexOf('.') !== -1 &&
             value.slice(0, value.indexOf('.') + 1).length > decimal) {
             return value.slice(0, value.indexOf('.') + decimal + 1).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');
-        } else {
-            return value.replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');
-        }
+        } 
+        return value.replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');
     }
 
     checkDouble(valueCheck: string) {
-        if (valueCheck.toString() == null || valueCheck.toString() == "") {
-            return false;
-        } else {
-            if ((valueCheck.toString().charAt(0) == '0' && valueCheck.length > 1) || valueCheck.toString().charAt(0) == '-') {
-                return false;
-            }
-        }
-        let numbers = new RegExp(/^[-+]?[0-9]*\.?[0-9]+([eE][-+]?[0-9]+)?$/);
-        if (!numbers.test(valueCheck.toString())) {
-            return false;
-        }
+        if (valueCheck.toString() == null || valueCheck.toString() == "") return false;
+        if ((valueCheck.toString().charAt(0) == '0' && valueCheck.length > 1) || valueCheck.toString().charAt(0) == '-') return false;
+        if (!(new RegExp(/^[-+]?[0-9]*\.?[0-9]+([eE][-+]?[0-9]+)?$/)).test(valueCheck.toString())) return false;
         return true;
     }
 
@@ -116,9 +107,7 @@ export class CommonFunction {
         var cookies = document.cookie.split(";");
         for (var i = 0; i < cookies.length; i++) {
             var cookie = cookies[i];
-            if (cookie.indexOf('lang') > -1 || cookie.indexOf('sysname') > -1 || cookie.indexOf('redirect') > -1) {
-                continue;
-            }
+            if (cookie.indexOf('lang') > -1 || cookie.indexOf('sysname') > -1 || cookie.indexOf('redirect') > -1) continue;
             var eqPos = cookie.indexOf("=");
             var name = eqPos > -1 ? cookie.substr(0, eqPos) : cookie;
             document.cookie = name + "=delete;path=/;expires=Thu, 01 Jan 1970 00:00:00 GMT";
@@ -130,14 +119,11 @@ export class CommonFunction {
         for (var i = 0; i < cookies.length; i++) {
             var cookie = cookies[i];
             if (cookie.indexOf(nameCookie) > -1) document.cookie = nameCookie + "=delete;path=/;expires=Thu, 01 Jan 1970 00:00:00 GMT";
-            
         }
     }
     
     OTP(secret_key: string, otp_valid_for_secs = 30, date = new Date(), lengthToken = 6) {
-        if (secret_key == null) {
-            throw "serect key not found";
-        }
+        if (secret_key == null) throw "serect key not found";
         let  timeKey: any = this.getTimeKey(date,otp_valid_for_secs);
         let hashed_value = sha256(timeKey + secret_key);
         let last_six_characters = hashed_value?.substr(hashed_value.length - (lengthToken == 6 ? 5 : 6)) || '0';
@@ -149,17 +135,12 @@ export class CommonFunction {
         while (otp_string.length < lengthToken) {
             otp_string = "0" + otp_string;
         }
-        
         return otp_string;
     }
 
     checkOTP(otp: any, secret_key: any, otp_valid_for_secs = 30, date = new Date(), lengthToken = 6) {
-        if (otp == null) {
-            throw "otp for check not found";
-        }
-        if (secret_key == null) {
-            throw "serect key not found";
-        }
+        if (otp == null) throw "otp for check not found";
+        if (secret_key == null) throw "serect key not found";
         return otp == this.OTP(secret_key, otp_valid_for_secs, date, lengthToken);
     }
 
@@ -168,23 +149,23 @@ export class CommonFunction {
         return Math.floor(Math.floor(date.getTime() / 1000) / otp_valid_for_secs);
     }
 
-    async getWorldTime(){
-        const response = await fetch('https://worldtimeapi.org/api/timezone/Etc/UTC', {
+    getWorldTime(callBack : any = null,otp_valid_for_secs:number){
+        fetch('https://worldtimeapi.org/api/timezone/Etc/UTC', {
             method: 'GET'
-        });
+        })
+        .then(response=>response.json())
+        .then(data=>{ if(callBack){
+            callBack(Math.floor(Math.floor(data.unixtime / 1000) / otp_valid_for_secs));
+        }})
         // console.log(response)
     }
     
     kk(element:any, width : any , height : any){
         if(typeof element == "string"){
             element = document.querySelector(`#${element.replace("#","")}`);
-            if(element == null){
-                throw `${element} is not found !`;
-            }
+            if(element == null) throw `${element} is not found !`;
         }else if(this.isElement(element) == false){
             throw `${element} will be HTMLElement or Id !`;
-        }else{
-            
         }
     }
 
