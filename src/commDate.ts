@@ -1,36 +1,16 @@
 export class CommonFuncDate {
     patternDate = [
-        "YYYY/MM/DD","YYYY.MM.DD","YYYY-MM-DD","YYYYMMDD",
-        "DD/MM/YYYY","DD.MM.YYYY","DD-MM-YYYY","DDMMYYYY",
-        "MMDDYYYY", "MM/DD/YYYY","MM-DD-YYYY","MM.DD.YYYY",
-        "YYYYDDMM","YYYY/DD/MM","YYYY-DD-MM","YYYY.DD.MM",
-        "YYYYMMDD HH,MM,SS","YYYYMMDDHH,MM,SS","YYYYMMDD HHMISS","YYYYMMDDHHMISS",
-        "YYYYMMDD HH,MM",
-        "YYYYMMDDHH,MM",
-        "YYYYMMDD HHMI",
-        "YYYYMMDDHHMI",
-        "YYYY/MM/DD HH,MM,SS",
-        "YYYY/MM/DDHH,MM,SS",
-        "YYYY/MM/DD HHMISS",
-        "YYYY/MM/DDHHMISS",
-        "YYYY/MM/DD HH,MM",
-        "YYYY/MM/DDHH,MM",
-        "YYYY/MM/DD HHMI",
-        "YYYY/MM/DDHHMI",
-        "YYYY-MM-DD HH,MM,SS",
-        "YYYY-MM-DDHH,MM,SS",
-        "YYYY-MM-DD HHMISS",
-        "YYYY-MM-DDHHMISS",
-        "YYYY-MM-DD HH,MM",
-        "YYYY-MM-DDHH,MM",
-        "YYYY-MM-DD HHMI",
-        "YYYY-MM-DDHHMI",
-        "YYYY.MM.DD HH,MM,SS",
-        "YYYY.MM.DDHH,MM,SS",
-        "YYYY.MM.DD HHMISS",
-        "YYYY.MM.DDHHMISS",
-        "YYYY.MM.DD HH,MM",
-        "YYYY.MM.DDHH,MM",
+        "YYYY/MM/DD", "YYYY.MM.DD", "YYYY-MM-DD", "YYYYMMDD",
+        "DD/MM/YYYY", "DD.MM.YYYY", "DD-MM-YYYY", "DDMMYYYY",
+        "MMDDYYYY", "MM/DD/YYYY", "MM-DD-YYYY", "MM.DD.YYYY",
+        "YYYYDDMM", "YYYY/DD/MM", "YYYY-DD-MM", "YYYY.DD.MM",
+        "YYYYMMDD HH,MM,SS", "YYYYMMDDHH,MM,SS", "YYYYMMDD HHMISS", "YYYYMMDDHHMISS",
+        "YYYYMMDD HH,MM","YYYYMMDDHH,MM","YYYYMMDD HHMI","YYYYMMDDHHMI", "YYYY/MM/DD HH,MM,SS",
+        "YYYY/MM/DDHH,MM,SS","YYYY/MM/DD HHMISS","YYYY/MM/DDHHMISS","YYYY/MM/DD HH,MM","YYYY/MM/DDHH,MM",
+        "YYYY/MM/DD HHMI","YYYY/MM/DDHHMI","YYYY-MM-DD HH,MM,SS","YYYY-MM-DDHH,MM,SS",
+        "YYYY-MM-DD HHMISS","YYYY-MM-DDHHMISS","YYYY-MM-DD HH,MM","YYYY-MM-DDHH,MM","YYYY-MM-DD HHMI",
+        "YYYY-MM-DDHHMI","YYYY.MM.DD HH,MM,SS","YYYY.MM.DDHH,MM,SS","YYYY.MM.DD HHMISS","YYYY.MM.DDHHMISS",
+        "YYYY.MM.DD HH,MM","YYYY.MM.DDHH,MM",
         "YYYY.MM.DD HHMI",
         "YYYY.MM.DDHHMI",
         "YYYYDDMM HH,MM,SS",
@@ -141,10 +121,10 @@ export class CommonFuncDate {
         "M/DD",
         "M-DD",
         "M.DD",
-        "DDM","DD/M","DD-M","DD.M","MD","M/D","M.D","DM","D/M","D.M","M-D","D-M"
+        "DDM", "DD/M", "DD-M", "DD.M", "MD", "M/D", "M.D", "DM", "D/M", "D.M", "M-D", "D-M"
     ]
     isDateWithFormat(value: string, pattern = "YYYY/MM/DD") {
-        if (value == null || value == "" ) return;
+        if (value == null || value == "") return;
         let pd = ['((?:19|20)[0-9]{2,2})', '(0[1-9]|1[012])', '(0[1-9]|[12][0-9]|3[01])', '[/]', '[-]', '[.]'];
         if (value != null && value != "") {
             pattern = pattern.toUpperCase();
@@ -157,7 +137,6 @@ export class CommonFuncDate {
                     return (new RegExp(/^(19[0-9]{2}|2[0-9]{3})[-](0[1-9]|1[012])[-]([123]0|[012][1-9]|31)$/g).test(value));
                 case "YYYYMMDD":
                     return (new RegExp(/^(19[0-9]{2}|2[0-9]{3})(0[1-9]|1[012])([123]0|[012][1-9]|31)$/g).test(value));
-
                 case "DD/MM/YYYY":
                     return (new RegExp(/^([123]0|[012][1-9]|31)[/](0[1-9]|1[012])[/](19[0-9]{2}|2[0-9]{3})$/g).test(value));
                 case "DD.MM.YYYY":
@@ -166,7 +145,6 @@ export class CommonFuncDate {
                     return (new RegExp(/^([123]0|[012][1-9]|31)[-](0[1-9]|1[012])[-](19[0-9]{2}|2[0-9]{3})$/g).test(value));
                 case "DDMMYYYY":
                     return (new RegExp(/^([123]0|[012][1-9]|31)(0[1-9]|1[012])(19[0-9]{2}|2[0-9]{3})$/g).test(value));
-
                 case "MMDDYYYY":
                     return (new RegExp(/^(0[1-9]|1[012])([123]0|[012][1-9]|31)(19[0-9]{2}|2[0-9]{3})$/g).test(value));
                 case "MM/DD/YYYY":
@@ -175,7 +153,6 @@ export class CommonFuncDate {
                     return (new RegExp(/^(0[1-9]|1[012])[-]([123]0|[012][1-9]|31)[-](19[0-9]{2}|2[0-9]{3})$/g).test(value));
                 case "MM.DD.YYYY":
                     return (new RegExp(/^(0[1-9]|1[012])[.]([123]0|[012][1-9]|31)[.](19[0-9]{2}|2[0-9]{3})$/g).test(value));
-
                 case "YYYYDDMM":
                     return (new RegExp(/^(19[0-9]{2}|2[0-9]{3})([123]0|[012][1-9]|31)(0[1-9]|1[012])$/g).test(value));
                 case "YYYY/DD/MM":
@@ -184,139 +161,262 @@ export class CommonFuncDate {
                     return (new RegExp(/^(19[0-9]{2}|2[0-9]{3})[-]([123]0|[012][1-9]|31)[-](0[1-9]|1[012])$/g).test(value));
                 case "YYYY.DD.MM":
                     return (new RegExp(/^(19[0-9]{2}|2[0-9]{3})[.]([123]0|[012][1-9]|31)[.](0[1-9]|1[012])$/g).test(value));
-
                 case "YYYYMMDD HH:MI:SS":
+                    return (new RegExp(/^(19[0-9]{2}|2[0-9]{3})(0[1-9]|1[012])([123]0|[012][1-9]|31)([ ]{0,1}([01][0-9]|2[0-3])[:]{0,1}([0-5][0-9])[:]{0,1}([0-5][0-9]){0,1}){0,1}$/g).test(value));
                 case "YYYYMMDDHH:MI:SS":
+                    return (new RegExp(/^(19[0-9]{2}|2[0-9]{3})(0[1-9]|1[012])([123]0|[012][1-9]|31)(([01][0-9]|2[0-3])[:]{0,1}([0-5][0-9])[:]{0,1}([0-5][0-9]){0,1}){0,1}$/g).test(value));
                 case "YYYYMMDD HHMISS":
+                    return (new RegExp(/^(19[0-9]{2}|2[0-9]{3})(0[1-9]|1[012])([123]0|[012][1-9]|31)([ ]{0,1}([01][0-9]|2[0-3])([0-5][0-9])([0-5][0-9]){0,1}){0,1}$/g).test(value));
                 case "YYYYMMDDHHMISS":
+                    return (new RegExp(/^(19[0-9]{2}|2[0-9]{3})(0[1-9]|1[012])([123]0|[012][1-9]|31)(([01][0-9]|2[0-3])([0-5][0-9])([0-5][0-9]){0,1}){0,1}$/g).test(value));
                 case "YYYYMMDD HH:MI":
+                    return (new RegExp(/^(19[0-9]{2}|2[0-9]{3})(0[1-9]|1[012])([123]0|[012][1-9]|31)([ ]{0,1}([01][0-9]|2[0-3])[:]{0,1}([0-5][0-9])){0,1}$/g).test(value));
                 case "YYYYMMDDHH:MI":
+                    return (new RegExp(/^(19[0-9]{2}|2[0-9]{3})(0[1-9]|1[012])([123]0|[012][1-9]|31)(([01][0-9]|2[0-3])[:]{0,1}([0-5][0-9])){0,1}$/g).test(value));
                 case "YYYYMMDD HHMI":
+                    return (new RegExp(/^(19[0-9]{2}|2[0-9]{3})(0[1-9]|1[012])([123]0|[012][1-9]|31)([ ]{0,1}([01][0-9]|2[0-3])([0-5][0-9])){0,1}$/g).test(value));
                 case "YYYYMMDDHHMI":
+                    return (new RegExp(/^(19[0-9]{2}|2[0-9]{3})(0[1-9]|1[012])([123]0|[012][1-9]|31)(([01][0-9]|2[0-3])([0-5][0-9])){0,1}$/g).test(value));
                 case "YYYY/MM/DD HH:MI:SS":
+                    return (new RegExp(/^(19[0-9]{2}|2[0-9]{3})(\/)(0[1-9]|1[012])(\/){1,1}([123]0|[012][1-9]|31)([ ]{1,1}([01][0-9]|2[0-3])[:]{1,1}([0-5][0-9])[:]{1,1}([0-5][0-9]){1,1}){1,1}$/g).test(value));
                 case "YYYY/MM/DDHH:MI:SS":
+                    return (new RegExp(/^(19[0-9]{2}|2[0-9]{3})(\/)(0[1-9]|1[012])(\/){1,1}([123]0|[012][1-9]|31)(([01][0-9]|2[0-3])[:]{1,1}([0-5][0-9])[:]{1,1}([0-5][0-9]){1,1}){1,1}$/g).test(value));
                 case "YYYY/MM/DD HHMISS":
+                    return (new RegExp(/^(19[0-9]{2}|2[0-9]{3})(\/)(0[1-9]|1[012])(\/){1,1}([123]0|[012][1-9]|31)([ ]{1,1}([01][0-9]|2[0-3])([0-5][0-9])([0-5][0-9]){1,1}){1,1}$/g).test(value));
                 case "YYYY/MM/DDHHMISS":
+                    return (new RegExp(/^(19[0-9]{2}|2[0-9]{3})(\/)(0[1-9]|1[012])(\/){1,1}([123]0|[012][1-9]|31)(([01][0-9]|2[0-3])([0-5][0-9])([0-5][0-9]){1,1}){1,1}$/g).test(value));
                 case "YYYY/MM/DD HH:MI":
+                    return (new RegExp(/^(19[0-9]{2}|2[0-9]{3})(\/)(0[1-9]|1[012])(\/){1,1}([123]0|[012][1-9]|31)([ ]{1,1}([01][0-9]|2[0-3])[:]{1,1}([0-5][0-9])){1,1}$/g).test(value));
                 case "YYYY/MM/DDHH:MI":
+                    return (new RegExp(/^(19[0-9]{2}|2[0-9]{3})(\/)(0[1-9]|1[012])(\/){1,1}([123]0|[012][1-9]|31)(([01][0-9]|2[0-3])[:]{1,1}([0-5][0-9])){1,1}$/g).test(value));
                 case "YYYY/MM/DD HHMI":
+                    return (new RegExp(/^(19[0-9]{2}|2[0-9]{3})(\/)(0[1-9]|1[012])(\/){1,1}([123]0|[012][1-9]|31)([ ]{1,1}([01][0-9]|2[0-3])([0-5][0-9])){1,1}$/g).test(value));
                 case "YYYY/MM/DDHHMI":
+                    return (new RegExp(/^(19[0-9]{2}|2[0-9]{3})(\/)(0[1-9]|1[012])(\/){1,1}([123]0|[012][1-9]|31)(([01][0-9]|2[0-3])([0-5][0-9])){1,1}$/g).test(value));
                 case "YYYY-MM-DD HH:MI:SS":
+                    return (new RegExp(/^(19[0-9]{2}|2[0-9]{3})(-)(0[1-9]|1[012])(-)([123]0|[012][1-9]|31)([ ]{1,1}([01][0-9]|2[0-3])[:]{1,1}([0-5][0-9])[:]{1,1}([0-5][0-9]){1,1}){1,1}$/g).test(value));
                 case "YYYY-MM-DDHH:MI:SS":
+                    return (new RegExp(/^(19[0-9]{2}|2[0-9]{3})(-)(0[1-9]|1[012])(-)([123]0|[012][1-9]|31)(([01][0-9]|2[0-3])[:]{1,1}([0-5][0-9])[:]{1,1}([0-5][0-9]){1,1}){1,1}$/g).test(value));
                 case "YYYY-MM-DD HHMISS":
+                    return (new RegExp(/^(19[0-9]{2}|2[0-9]{3})(-)(0[1-9]|1[012])(-)([123]0|[012][1-9]|31)([ ]{1,1}([01][0-9]|2[0-3])([0-5][0-9])([0-5][0-9]){1,1}){1,1}$/g).test(value));
                 case "YYYY-MM-DDHHMISS":
+                    return (new RegExp(/^(19[0-9]{2}|2[0-9]{3})(-)(0[1-9]|1[012])(-)([123]0|[012][1-9]|31)(([01][0-9]|2[0-3])([0-5][0-9])([0-5][0-9]){1,1}){1,1}$/g).test(value));
                 case "YYYY-MM-DD HH:MI":
+                    return (new RegExp(/^(19[0-9]{2}|2[0-9]{3})(-)(0[1-9]|1[012])(-)([123]0|[012][1-9]|31)([ ]{1,1}([01][0-9]|2[0-3])[:]{1,1}([0-5][0-9])){1,1}$/g).test(value));
                 case "YYYY-MM-DDHH:MI":
+                    return (new RegExp(/^(19[0-9]{2}|2[0-9]{3})(-)(0[1-9]|1[012])(-)([123]0|[012][1-9]|31)(([01][0-9]|2[0-3])[:]{1,1}([0-5][0-9])){1,1}$/g).test(value));
                 case "YYYY-MM-DD HHMI":
+                    return (new RegExp(/^(19[0-9]{2}|2[0-9]{3})(-)(0[1-9]|1[012])(-)([123]0|[012][1-9]|31)(([01][0-9]|2[0-3])([0-5][0-9])){1,1}$/g).test(value));
                 case "YYYY-MM-DDHHMI":
+                    return (new RegExp(/^(19[0-9]{2}|2[0-9]{3})(-)(0[1-9]|1[012])(-)([123]0|[012][1-9]|31)(([01][0-9]|2[0-3])([0-5][0-9])){1,1}$/g).test(value));
                 case "YYYY.MM.DD HH:MI:SS":
+                    return (new RegExp(/^(19[0-9]{2}|2[0-9]{3})(.)(0[1-9]|1[012])(.)([123]0|[012][1-9]|31)([ ]{1,1}([01][0-9]|2[0-3])[:]{1,1}([0-5][0-9])[:]{1,1}([0-5][0-9]){1,1}){1,1}$/g).test(value));
                 case "YYYY.MM.DDHH:MI:SS":
+                    return (new RegExp(/^(19[0-9]{2}|2[0-9]{3})(.)(0[1-9]|1[012])(.)([123]0|[012][1-9]|31)(([01][0-9]|2[0-3])[:]{1,1}([0-5][0-9])[:]{1,1}([0-5][0-9]){1,1}){1,1}$/g).test(value));
                 case "YYYY.MM.DD HHMISS":
+                    return (new RegExp(/^(19[0-9]{2}|2[0-9]{3})(.)(0[1-9]|1[012])(.)([123]0|[012][1-9]|31)([ ]{1,1}([01][0-9]|2[0-3])([0-5][0-9])([0-5][0-9]){1,1}){1,1}$/g).test(value));
                 case "YYYY.MM.DDHHMISS":
+                    return (new RegExp(/^(19[0-9]{2}|2[0-9]{3})(.)(0[1-9]|1[012])(.)([123]0|[012][1-9]|31)(([01][0-9]|2[0-3])([0-5][0-9])([0-5][0-9]){1,1}){1,1}$/g).test(value));
                 case "YYYY.MM.DD HH:MI":
+                    return (new RegExp(/^(19[0-9]{2}|2[0-9]{3})(.)(0[1-9]|1[012])(.)([123]0|[012][1-9]|31)([ ]{1,1}([01][0-9]|2[0-3])[:]{1,1}([0-5][0-9])){1,1}$/g).test(value));
                 case "YYYY.MM.DDHH:MI":
+                    return (new RegExp(/^(19[0-9]{2}|2[0-9]{3})(.)(0[1-9]|1[012])(.)([123]0|[012][1-9]|31)(([01][0-9]|2[0-3])[:]{1,1}([0-5][0-9])){1,1}$/g).test(value));
                 case "YYYY.MM.DD HHMI":
+                    return (new RegExp(/^(19[0-9]{2}|2[0-9]{3})(.)(0[1-9]|1[012])(.)([123]0|[012][1-9]|31)(([01][0-9]|2[0-3])([0-5][0-9])){1,1}$/g).test(value));
                 case "YYYY.MM.DDHHMI":
-                    return (new RegExp(/^(19[0-9]{2}|2[0-9]{3})(\/|.|-){0,1}(0[1-9]|1[012])(\/|.|-){0,1}([123]0|[012][1-9]|31)([ ]{0,1}([01][0-9]|2[0-3])[:]{0,1}([0-5][0-9])[:]{0,1}([0-5][0-9]){0,1}){0,1}$/g).test(value));
+                    return (new RegExp(/^(19[0-9]{2}|2[0-9]{3})(.)(0[1-9]|1[012])(.)([123]0|[012][1-9]|31)(([01][0-9]|2[0-3])([0-5][0-9])){1,1}$/g).test(value));
                 case "YYYYDDMM HH:MI:SS":
+                    return (new RegExp(/^(19[0-9]{2}|2[0-9]{3})([123]0|[012][1-9]|31)(0[1-9]|1[012])([ ]([01][0-9]|2[0-3])[:]([0-5][0-9])[:]([0-5][0-9]))$/g).test(value));
                 case "YYYYDDMMHH:MI:SS":
+                    return (new RegExp(/^(19[0-9]{2}|2[0-9]{3})([123]0|[012][1-9]|31)(0[1-9]|1[012])(([01][0-9]|2[0-3])[:]([0-5][0-9])[:]([0-5][0-9]))$/g).test(value));
                 case "YYYYDDMM HHMISS":
+                    return (new RegExp(/^(19[0-9]{2}|2[0-9]{3})([123]0|[012][1-9]|31)(0[1-9]|1[012])(([01][0-9]|2[0-3])([0-5][0-9])([0-5][0-9]))$/g).test(value));
                 case "YYYYDDMMHHMISS":
+                    return (new RegExp(/^(19[0-9]{2}|2[0-9]{3})([123]0|[012][1-9]|31)(0[1-9]|1[012])(([01][0-9]|2[0-3])([0-5][0-9])([0-5][0-9]))$/g).test(value));
                 case "YYYYDDMM HH:MI":
+                    return (new RegExp(/^(19[0-9]{2}|2[0-9]{3})([123]0|[012][1-9]|31)(0[1-9]|1[012])([ ]([01][0-9]|2[0-3])[:]([0-5][0-9]))$/g).test(value));
                 case "YYYYDDMMHH:MI":
+                    return (new RegExp(/^(19[0-9]{2}|2[0-9]{3})([123]0|[012][1-9]|31)(0[1-9]|1[012])(([01][0-9]|2[0-3])[:]([0-5][0-9]))$/g).test(value));
                 case "YYYYDDMM HHMI":
+                    return (new RegExp(/^(19[0-9]{2}|2[0-9]{3})([123]0|[012][1-9]|31)(0[1-9]|1[012])(([01][0-9]|2[0-3])([0-5][0-9]))$/g).test(value));
                 case "YYYYDDMMHHMI":
+                    return (new RegExp(/^(19[0-9]{2}|2[0-9]{3})([123]0|[012][1-9]|31)(0[1-9]|1[012])(([01][0-9]|2[0-3])([0-5][0-9]))$/g).test(value));
                 case "YYYY/DD/MM HH:MI:SS":
+                    return (new RegExp(/^(19[0-9]{2}|2[0-9]{3})[\/]([123]0|[012][1-9]|31)[\/](0[1-9]|1[012])([ ]([01][0-9]|2[0-3])[:]([0-5][0-9])[:]([0-5][0-9]))$/g).test(value));
                 case "YYYY/DD/MMHH:MI:SS":
+                    return (new RegExp(/^(19[0-9]{2}|2[0-9]{3})[\/]([123]0|[012][1-9]|31)[\/](0[1-9]|1[012])(([01][0-9]|2[0-3])[:]([0-5][0-9])[:]([0-5][0-9]))$/g).test(value));
                 case "YYYY/DD/MM HHMISS":
+                    return (new RegExp(/^(19[0-9]{2}|2[0-9]{3})[\/]([123]0|[012][1-9]|31)[\/](0[1-9]|1[012])([ ]([01][0-9]|2[0-3])([0-5][0-9])([0-5][0-9]))$/g).test(value));
                 case "YYYY/DD/MMHHMISS":
+                    return (new RegExp(/^(19[0-9]{2}|2[0-9]{3})[\/]([123]0|[012][1-9]|31)[\/](0[1-9]|1[012])(([01][0-9]|2[0-3])([0-5][0-9])([0-5][0-9]))$/g).test(value));
                 case "YYYY/DD/MM HH:MI":
+                    return (new RegExp(/^(19[0-9]{2}|2[0-9]{3})[\/]([123]0|[012][1-9]|31)[\/](0[1-9]|1[012])([ ]([01][0-9]|2[0-3])[:]([0-5][0-9]))$/g).test(value));
                 case "YYYY/DD/MMHH:MI":
+                    return (new RegExp(/^(19[0-9]{2}|2[0-9]{3})[\/]([123]0|[012][1-9]|31)[\/](0[1-9]|1[012])(([01][0-9]|2[0-3])[:]([0-5][0-9]))$/g).test(value));
                 case "YYYY/DD/MM HHMI":
+                    return (new RegExp(/^(19[0-9]{2}|2[0-9]{3})[\/]([123]0|[012][1-9]|31)[\/](0[1-9]|1[012])(([01][0-9]|2[0-3])([0-5][0-9]))$/g).test(value));
                 case "YYYY/DD/MMHHMI":
+                    return (new RegExp(/^(19[0-9]{2}|2[0-9]{3})[\/]([123]0|[012][1-9]|31)[\/](0[1-9]|1[012])(([01][0-9]|2[0-3])([0-5][0-9]))$/g).test(value));
                 case "YYYY-DD-MM HH:MI:SS":
+                    return (new RegExp(/^(19[0-9]{2}|2[0-9]{3})[-]([123]0|[012][1-9]|31)[-](0[1-9]|1[012])([ ]([01][0-9]|2[0-3])[:]([0-5][0-9])[:]([0-5][0-9]))$/g).test(value));
                 case "YYYY-DD-MMHH:MI:SS":
+                    return (new RegExp(/^(19[0-9]{2}|2[0-9]{3})[-]([123]0|[012][1-9]|31)[-](0[1-9]|1[012])(([01][0-9]|2[0-3])[:]([0-5][0-9])[:]([0-5][0-9]))$/g).test(value));
                 case "YYYY-DD-MM HHMISS":
+                    return (new RegExp(/^(19[0-9]{2}|2[0-9]{3})[-]([123]0|[012][1-9]|31)[-](0[1-9]|1[012])([ ]([01][0-9]|2[0-3])([0-5][0-9])([0-5][0-9]))$/g).test(value));
                 case "YYYY-DD-MMHHMISS":
+                    return (new RegExp(/^(19[0-9]{2}|2[0-9]{3})[-]([123]0|[012][1-9]|31)[-](0[1-9]|1[012])(([01][0-9]|2[0-3])([0-5][0-9])([0-5][0-9]))$/g).test(value));
                 case "YYYY-DD-MM HH:MI":
+                    return (new RegExp(/^(19[0-9]{2}|2[0-9]{3})[-]([123]0|[012][1-9]|31)[-](0[1-9]|1[012])([ ]([01][0-9]|2[0-3])[:]([0-5][0-9]))$/g).test(value));
                 case "YYYY-DD-MMHH:MI":
+                    return (new RegExp(/^(19[0-9]{2}|2[0-9]{3})[-]([123]0|[012][1-9]|31)[-](0[1-9]|1[012])(([01][0-9]|2[0-3])[:]([0-5][0-9]))$/g).test(value));
                 case "YYYY-DD-MM HHMI":
+                    return (new RegExp(/^(19[0-9]{2}|2[0-9]{3})[-]([123]0|[012][1-9]|31)[-](0[1-9]|1[012])([ ]([01][0-9]|2[0-3])([0-5][0-9]))$/g).test(value));
                 case "YYYY-DD-MMHHMI":
+                    return (new RegExp(/^(19[0-9]{2}|2[0-9]{3})[-]([123]0|[012][1-9]|31)[-](0[1-9]|1[012])(([01][0-9]|2[0-3])[:]([0-5][0-9]))$/g).test(value));
                 case "YYYY.DD.MM HH:MI:SS":
+                    return (new RegExp(/^(19[0-9]{2}|2[0-9]{3})[.]([123]0|[012][1-9]|31)[.](0[1-9]|1[012])([ ]([01][0-9]|2[0-3])[:]([0-5][0-9])[:]([0-5][0-9]))$/g).test(value));
                 case "YYYY.DD.MMHH:MI:SS":
+                    return (new RegExp(/^(19[0-9]{2}|2[0-9]{3})[.]([123]0|[012][1-9]|31)[.](0[1-9]|1[012])(([01][0-9]|2[0-3])[:]([0-5][0-9])[:]([0-5][0-9]))$/g).test(value));
                 case "YYYY.DD.MM HHMISS":
+                    return (new RegExp(/^(19[0-9]{2}|2[0-9]{3})[.]([123]0|[012][1-9]|31)[.](0[1-9]|1[012])([ ]([01][0-9]|2[0-3])([0-5][0-9])([0-5][0-9]))$/g).test(value));
                 case "YYYY.DD.MMHHMISS":
+                    return (new RegExp(/^(19[0-9]{2}|2[0-9]{3})[.]([123]0|[012][1-9]|31)[.](0[1-9]|1[012])(([01][0-9]|2[0-3])([0-5][0-9])([0-5][0-9]))$/g).test(value));
                 case "YYYY.DD.MM HH:MI":
+                    return (new RegExp(/^(19[0-9]{2}|2[0-9]{3})[.]([123]0|[012][1-9]|31)[.](0[1-9]|1[012])([ ]([01][0-9]|2[0-3])[:]([0-5][0-9]))$/g).test(value));
                 case "YYYY.DD.MMHH:MI":
+                    return (new RegExp(/^(19[0-9]{2}|2[0-9]{3})[.]([123]0|[012][1-9]|31)[.](0[1-9]|1[012])(([01][0-9]|2[0-3])[:]([0-5][0-9]))$/g).test(value));
                 case "YYYY.DD.MM HHMI":
+                    return (new RegExp(/^(19[0-9]{2}|2[0-9]{3})[.]([123]0|[012][1-9]|31)[.](0[1-9]|1[012])([ ]([01][0-9]|2[0-3])([0-5][0-9]))$/g).test(value));
                 case "YYYY.DD.MMHHMI":
-                    return (new RegExp(/^(19[0-9]{2}|2[0-9]{3})(\/|.|-){0,1}([123]0|[012][1-9]|31)(\/|.|-){0,1}(0[1-9]|1[012])([ ]{0,1}([01][0-9]|2[0-3])[:]{0,1}([0-5][0-9])[:]{0,1}([0-5][0-9]){0,1}){0,1}$/g).test(value));
+                    return (new RegExp(/^(19[0-9]{2}|2[0-9]{3})[.]([123]0|[012][1-9]|31)[.](0[1-9]|1[012])(([01][0-9]|2[0-3])([0-5][0-9]))$/g).test(value));
                 case "DDMMYYYY HH:MI:SS":
+                    return (new RegExp(/^([123]0|[012][1-9]|31)(0[1-9]|1[012])(19[0-9]{2}|2[0-9]{3})([ ]([01][0-9]|2[0-3])[:]([0-5][0-9])[:]([0-5][0-9]))$/g).test(value));
                 case "DDMMYYYYHH:MI:SS":
+                    return (new RegExp(/^([123]0|[012][1-9]|31)(0[1-9]|1[012])(19[0-9]{2}|2[0-9]{3})(([01][0-9]|2[0-3])[:]([0-5][0-9])[:]([0-5][0-9]))$/g).test(value));
                 case "DDMMYYYY HHMISS":
+                    return (new RegExp(/^([123]0|[012][1-9]|31)(0[1-9]|1[012])(19[0-9]{2}|2[0-9]{3})([ ]([01][0-9]|2[0-3])([0-5][0-9])([0-5][0-9]))$/g).test(value));
                 case "DDMMYYYYHHMISS":
+                    return (new RegExp(/^([123]0|[012][1-9]|31)(0[1-9]|1[012])(19[0-9]{2}|2[0-9]{3})(([01][0-9]|2[0-3])([0-5][0-9])([0-5][0-9]))$/g).test(value));
                 case "DDMMYYYY HH:MI":
+                    return (new RegExp(/^([123]0|[012][1-9]|31)(0[1-9]|1[012])(19[0-9]{2}|2[0-9]{3})([ ]([01][0-9]|2[0-3])[:]([0-5][0-9]))$/g).test(value));
                 case "DDMMYYYYHH:MI":
+                    return (new RegExp(/^([123]0|[012][1-9]|31)(0[1-9]|1[012])(19[0-9]{2}|2[0-9]{3})(([01][0-9]|2[0-3])[:]([0-5][0-9]))$/g).test(value));
                 case "DDMMYYYY HHMI":
+                    return (new RegExp(/^([123]0|[012][1-9]|31)(0[1-9]|1[012])(19[0-9]{2}|2[0-9]{3})([ ]([01][0-9]|2[0-3])([0-5][0-9]))$/g).test(value));
                 case "DDMMYYYYHHMI":
+                    return (new RegExp(/^([123]0|[012][1-9]|31)(0[1-9]|1[012])(19[0-9]{2}|2[0-9]{3})(([01][0-9]|2[0-3])([0-5][0-9]))$/g).test(value));
                 case "DD/MM/YYYY HH:MI:SS":
+                    return (new RegExp(/^([123]0|[012][1-9]|31)[\/](0[1-9]|1[012])[\/](19[0-9]{2}|2[0-9]{3})([ ]([01][0-9]|2[0-3])[:]([0-5][0-9])[:]([0-5][0-9]))$/g).test(value));
                 case "DD/MM/YYYYHH:MI:SS":
+                    return (new RegExp(/^([123]0|[012][1-9]|31)[\/](0[1-9]|1[012])[\/](19[0-9]{2}|2[0-9]{3})(([01][0-9]|2[0-3])[:]([0-5][0-9])[:]([0-5][0-9]))$/g).test(value));
                 case "DD/MM/YYYY HHMISS":
+                    return (new RegExp(/^([123]0|[012][1-9]|31)[\/](0[1-9]|1[012])[\/](19[0-9]{2}|2[0-9]{3})([ ]([01][0-9]|2[0-3])([0-5][0-9])([0-5][0-9]))$/g).test(value));
                 case "DD/MM/YYYYHHMISS":
+                    return (new RegExp(/^([123]0|[012][1-9]|31)[\/](0[1-9]|1[012])[\/](19[0-9]{2}|2[0-9]{3})(([01][0-9]|2[0-3])([0-5][0-9])([0-5][0-9]))$/g).test(value));
                 case "DD/MM/YYYY HH:MI":
+                    return (new RegExp(/^([123]0|[012][1-9]|31)[\/](0[1-9]|1[012])[\/](19[0-9]{2}|2[0-9]{3})([ ]([01][0-9]|2[0-3])[:]([0-5][0-9]))$/g).test(value));
                 case "DD/MM/YYYYHH:MI":
+                    return (new RegExp(/^([123]0|[012][1-9]|31)[\/](0[1-9]|1[012])[\/](19[0-9]{2}|2[0-9]{3})(([01][0-9]|2[0-3])[:]([0-5][0-9]))$/g).test(value));
                 case "DD/MM/YYYY HHMI":
+                    return (new RegExp(/^([123]0|[012][1-9]|31)[\/](0[1-9]|1[012])[\/](19[0-9]{2}|2[0-9]{3})([ ]([01][0-9]|2[0-3])([0-5][0-9]))$/g).test(value));
                 case "DD/MM/YYYYHHMI":
+                    return (new RegExp(/^([123]0|[012][1-9]|31)[\/](0[1-9]|1[012])[\/](19[0-9]{2}|2[0-9]{3})(([01][0-9]|2[0-3])([0-5][0-9]))$/g).test(value));
                 case "DD-MM-YYYY HH:MI:SS":
+                    return (new RegExp(/^([123]0|[012][1-9]|31)[-](0[1-9]|1[012])[-](19[0-9]{2}|2[0-9]{3})([ ]([01][0-9]|2[0-3])[:]([0-5][0-9])[:]([0-5][0-9]))$/g).test(value));
                 case "DD-MM-YYYYHH:MI:SS":
+                    return (new RegExp(/^([123]0|[012][1-9]|31)[-](0[1-9]|1[012])[-](19[0-9]{2}|2[0-9]{3})(([01][0-9]|2[0-3])[:]([0-5][0-9])[:]([0-5][0-9]))$/g).test(value));
                 case "DD-MM-YYYY HHMISS":
+                    return (new RegExp(/^([123]0|[012][1-9]|31)[-](0[1-9]|1[012])[-](19[0-9]{2}|2[0-9]{3})([ ]([01][0-9]|2[0-3])([0-5][0-9])([0-5][0-9]))$/g).test(value));
                 case "DD-MM-YYYYHHMISS":
+                    return (new RegExp(/^([123]0|[012][1-9]|31)[-](0[1-9]|1[012])[-](19[0-9]{2}|2[0-9]{3})(([01][0-9]|2[0-3])([0-5][0-9])([0-5][0-9]))$/g).test(value));
                 case "DD-MM-YYYY HH:MI":
+                    return (new RegExp(/^([123]0|[012][1-9]|31)[-](0[1-9]|1[012])[-](19[0-9]{2}|2[0-9]{3})([ ]([01][0-9]|2[0-3])[:]([0-5][0-9]))$/g).test(value));
                 case "DD-MM-YYYYHH:MI":
+                    return (new RegExp(/^([123]0|[012][1-9]|31)[-](0[1-9]|1[012])[-](19[0-9]{2}|2[0-9]{3})(([01][0-9]|2[0-3])[:]([0-5][0-9]))$/g).test(value));
                 case "DD-MM-YYYY HHMI":
+                    return (new RegExp(/^([123]0|[012][1-9]|31)[-](0[1-9]|1[012])[-](19[0-9]{2}|2[0-9]{3})([ ]([01][0-9]|2[0-3])([0-5][0-9]))$/g).test(value));
                 case "DD-MM-YYYYHHMI":
+                    return (new RegExp(/^([123]0|[012][1-9]|31)[-](0[1-9]|1[012])[-](19[0-9]{2}|2[0-9]{3})(([01][0-9]|2[0-3])([0-5][0-9]))$/g).test(value));
                 case "DD.MM.YYYY HH:MI:SS":
+                    return (new RegExp(/^([123]0|[012][1-9]|31)[.](0[1-9]|1[012])[.](19[0-9]{2}|2[0-9]{3})([ ]([01][0-9]|2[0-3])[:]([0-5][0-9])[:]([0-5][0-9]))$/g).test(value));
                 case "DD.MM.YYYYHH:MI:SS":
+                    return (new RegExp(/^([123]0|[012][1-9]|31)[.](0[1-9]|1[012])[.](19[0-9]{2}|2[0-9]{3})(([01][0-9]|2[0-3])[:]([0-5][0-9])[:]([0-5][0-9]))$/g).test(value));
                 case "DD.MM.YYYY HHMISS":
+                    return (new RegExp(/^([123]0|[012][1-9]|31)[.](0[1-9]|1[012])[.](19[0-9]{2}|2[0-9]{3})([ ]([01][0-9]|2[0-3])([0-5][0-9])([0-5][0-9]))$/g).test(value));
                 case "DD.MM.YYYYHHMISS":
+                    return (new RegExp(/^([123]0|[012][1-9]|31)[.](0[1-9]|1[012])[.](19[0-9]{2}|2[0-9]{3})(([01][0-9]|2[0-3])([0-5][0-9])([0-5][0-9]))$/g).test(value));
                 case "DD.MM.YYYY HH:MI":
+                    return (new RegExp(/^([123]0|[012][1-9]|31)[.](0[1-9]|1[012])[.](19[0-9]{2}|2[0-9]{3})([ ]([01][0-9]|2[0-3])[:]([0-5][0-9]))$/g).test(value));
                 case "DD.MM.YYYYHH:MI":
+                    return (new RegExp(/^([123]0|[012][1-9]|31)[.](0[1-9]|1[012])[.](19[0-9]{2}|2[0-9]{3})(([01][0-9]|2[0-3])[:]([0-5][0-9]))$/g).test(value));
                 case "DD.MM.YYYY HHMI":
+                    return (new RegExp(/^([123]0|[012][1-9]|31)[.](0[1-9]|1[012])[.](19[0-9]{2}|2[0-9]{3})([ ]([01][0-9]|2[0-3])([0-5][0-9]))$/g).test(value));
                 case "DD.MM.YYYYHHMI":
-                    return (new RegExp(/^([123]0|[012][1-9]|31)(\/|.|-){0,1}(0[1-9]|1[012])(\/|.|-){0,1}(19[0-9]{2}|2[0-9]{3})([ ]{0,1}([01][0-9]|2[0-3])[:]{0,1}([0-5][0-9])[:]{0,1}([0-5][0-9]){0,1}){0,1}$/g).test(value));
+                    return (new RegExp(/^([123]0|[012][1-9]|31)[.](0[1-9]|1[012])[.](19[0-9]{2}|2[0-9]{3})(([01][0-9]|2[0-3])([0-5][0-9]))$/g).test(value));
                 case "MMDDYYYY HH:MI:SS":
+                    return (new RegExp(/^(0[1-9]|1[012])([123]0|[012][1-9]|31)(19[0-9]{2}|2[0-9]{3})([ ]([01][0-9]|2[0-3])[:]([0-5][0-9])[:]([0-5][0-9]))$/g).test(value));
                 case "MMDDYYYYHH:MI:SS":
+                    return (new RegExp(/^(0[1-9]|1[012])([123]0|[012][1-9]|31)(19[0-9]{2}|2[0-9]{3})(([01][0-9]|2[0-3])[:]([0-5][0-9])[:]([0-5][0-9]))$/g).test(value));
                 case "MMDDYYYY HHMISS":
+                    return (new RegExp(/^(0[1-9]|1[012])([123]0|[012][1-9]|31)(19[0-9]{2}|2[0-9]{3})([ ]([01][0-9]|2[0-3])([0-5][0-9])([0-5][0-9]))$/g).test(value));
                 case "MMDDYYYYHHMISS":
+                    return (new RegExp(/^(0[1-9]|1[012])([123]0|[012][1-9]|31)(19[0-9]{2}|2[0-9]{3})(([01][0-9]|2[0-3])([0-5][0-9])([0-5][0-9]))$/g).test(value));
                 case "MMDDYYYY HH:MI":
+                    return (new RegExp(/^(0[1-9]|1[012])([123]0|[012][1-9]|31)(19[0-9]{2}|2[0-9]{3})([ ]([01][0-9]|2[0-3])[:]([0-5][0-9]))$/g).test(value));
                 case "MMDDYYYYHH:MI":
+                    return (new RegExp(/^(0[1-9]|1[012])([123]0|[012][1-9]|31)(19[0-9]{2}|2[0-9]{3})(([01][0-9]|2[0-3])[:]([0-5][0-9]))$/g).test(value));
                 case "MMDDYYYY HHMI":
+                    return (new RegExp(/^(0[1-9]|1[012])([123]0|[012][1-9]|31)(19[0-9]{2}|2[0-9]{3})([ ]([01][0-9]|2[0-3])([0-5][0-9]))$/g).test(value));
                 case "MMDDYYYYHHMI":
+                    return (new RegExp(/^(0[1-9]|1[012])([123]0|[012][1-9]|31)(19[0-9]{2}|2[0-9]{3})(([01][0-9]|2[0-3])([0-5][0-9]))$/g).test(value));
                 case "MM/DD/YYYY HH:MI:SS":
+                    return (new RegExp(/^(0[1-9]|1[012])[\/]([123]0|[012][1-9]|31)[\/](19[0-9]{2}|2[0-9]{3})([ ]([01][0-9]|2[0-3])[:]([0-5][0-9])[:]([0-5][0-9]))$/g).test(value));
                 case "MM/DD/YYYYHH:MI:SS":
+                    return (new RegExp(/^(0[1-9]|1[012])[\/]([123]0|[012][1-9]|31)[\/](19[0-9]{2}|2[0-9]{3})(([01][0-9]|2[0-3])[:]([0-5][0-9])[:]([0-5][0-9]))$/g).test(value));
                 case "MM/DD/YYYY HHMISS":
+                    return (new RegExp(/^(0[1-9]|1[012])[\/]([123]0|[012][1-9]|31)[\/](19[0-9]{2}|2[0-9]{3})([ ]([01][0-9]|2[0-3])([0-5][0-9])([0-5][0-9]))$/g).test(value));
                 case "MM/DD/YYYYHHMISS":
+                    return (new RegExp(/^(0[1-9]|1[012])[\/]([123]0|[012][1-9]|31)[\/](19[0-9]{2}|2[0-9]{3})(([01][0-9]|2[0-3])([0-5][0-9])([0-5][0-9]))$/g).test(value));
                 case "MM/DD/YYYY HH:MI":
+                    return (new RegExp(/^(0[1-9]|1[012])[\/]([123]0|[012][1-9]|31)[\/](19[0-9]{2}|2[0-9]{3})([ ]([01][0-9]|2[0-3])[:]([0-5][0-9]))$/g).test(value));
                 case "MM/DD/YYYYHH:MI":
+                    return (new RegExp(/^(0[1-9]|1[012])[\/]([123]0|[012][1-9]|31)[\/](19[0-9]{2}|2[0-9]{3})(([01][0-9]|2[0-3])[:]([0-5][0-9]))$/g).test(value));
                 case "MM/DD/YYYY HHMI":
+                    return (new RegExp(/^(0[1-9]|1[012])[\/]([123]0|[012][1-9]|31)[\/](19[0-9]{2}|2[0-9]{3})(([01][0-9]|2[0-3])([0-5][0-9]))$/g).test(value));
                 case "MM/DD/YYYYHHMI":
+                    return (new RegExp(/^(0[1-9]|1[012])[\/]([123]0|[012][1-9]|31)[\/](19[0-9]{2}|2[0-9]{3})(([01][0-9]|2[0-3])([0-5][0-9]))$/g).test(value));
                 case "MM-DD-YYYY HH:MI:SS":
+                    return (new RegExp(/^(0[1-9]|1[012])[-]([123]0|[012][1-9]|31)[-](19[0-9]{2}|2[0-9]{3})([ ]([01][0-9]|2[0-3])[:]([0-5][0-9])[:]([0-5][0-9]))$/g).test(value));
                 case "MM-DD-YYYYHH:MI:SS":
+                    return (new RegExp(/^(0[1-9]|1[012])[-]([123]0|[012][1-9]|31)[-](19[0-9]{2}|2[0-9]{3})(([01][0-9]|2[0-3])[:]([0-5][0-9])[:]([0-5][0-9]))$/g).test(value));
                 case "MM-DD-YYYY HHMISS":
+                    return (new RegExp(/^(0[1-9]|1[012])[-]([123]0|[012][1-9]|31)[-](19[0-9]{2}|2[0-9]{3})([ ]([01][0-9]|2[0-3])([0-5][0-9])([0-5][0-9]))$/g).test(value));
                 case "MM-DD-YYYYHHMISS":
+                    return (new RegExp(/^(0[1-9]|1[012])[-]([123]0|[012][1-9]|31)[-](19[0-9]{2}|2[0-9]{3})(([01][0-9]|2[0-3])([0-5][0-9])([0-5][0-9]))$/g).test(value));
                 case "MM-DD-YYYY HH:MI":
+                    return (new RegExp(/^(0[1-9]|1[012])[-]([123]0|[012][1-9]|31)[-](19[0-9]{2}|2[0-9]{3})([ ]([01][0-9]|2[0-3])[:]([0-5][0-9]))$/g).test(value));
                 case "MM-DD-YYYYHH:MI":
+                    return (new RegExp(/^(0[1-9]|1[012])[-]([123]0|[012][1-9]|31)[-](19[0-9]{2}|2[0-9]{3})(([01][0-9]|2[0-3])[:]([0-5][0-9]))$/g).test(value));
                 case "MM-DD-YYYY HHMI":
+                    return (new RegExp(/^(0[1-9]|1[012])[-]([123]0|[012][1-9]|31)[-](19[0-9]{2}|2[0-9]{3})([ ]([01][0-9]|2[0-3])([0-5][0-9]))$/g).test(value));
                 case "MM-DD-YYYYHHMI":
+                    return (new RegExp(/^(0[1-9]|1[012])[-]([123]0|[012][1-9]|31)[-](19[0-9]{2}|2[0-9]{3})(([01][0-9]|2[0-3])([0-5][0-9]))$/g).test(value));
                 case "MM.DD.YYYY HH:MI:SS":
+                    return (new RegExp(/^(0[1-9]|1[012])[.]([123]0|[012][1-9]|31)[.](19[0-9]{2}|2[0-9]{3})([ ]([01][0-9]|2[0-3])[:]([0-5][0-9])[:]([0-5][0-9]))$/g).test(value));
                 case "MM.DD.YYYYHH:MI:SS":
+                    return (new RegExp(/^(0[1-9]|1[012])[.]([123]0|[012][1-9]|31)[.](19[0-9]{2}|2[0-9]{3})(([01][0-9]|2[0-3])[:]([0-5][0-9])[:]([0-5][0-9]))$/g).test(value));
                 case "MM.DD.YYYY HHMISS":
+                    return (new RegExp(/^(0[1-9]|1[012])[.]([123]0|[012][1-9]|31)[.](19[0-9]{2}|2[0-9]{3})([ ]([01][0-9]|2[0-3])([0-5][0-9])([0-5][0-9]))$/g).test(value));
                 case "MM.DD.YYYYHHMISS":
+                    return (new RegExp(/^(0[1-9]|1[012])[.]([123]0|[012][1-9]|31)[.](19[0-9]{2}|2[0-9]{3})(([01][0-9]|2[0-3])([0-5][0-9])([0-5][0-9]))$/g).test(value));
                 case "MM.DD.YYYY HH:MI":
+                    return (new RegExp(/^(0[1-9]|1[012])[.]([123]0|[012][1-9]|31)[.](19[0-9]{2}|2[0-9]{3})([ ]([01][0-9]|2[0-3])[:]([0-5][0-9]))$/g).test(value));
                 case "MM.DD.YYYYHH:MI":
+                    return (new RegExp(/^(0[1-9]|1[012])[.]([123]0|[012][1-9]|31)[.](19[0-9]{2}|2[0-9]{3})(([01][0-9]|2[0-3])[:]([0-5][0-9]))$/g).test(value));
                 case "MM.DD.YYYY HHMI":
+                    return (new RegExp(/^(0[1-9]|1[012])[.]([123]0|[012][1-9]|31)[.](19[0-9]{2}|2[0-9]{3})(([01][0-9]|2[0-3])([0-5][0-9]))$/g).test(value));
                 case "MM.DD.YYYYHHMI":
-                    return (new RegExp(/^(0[1-9]|1[012])(\/|.|-){0,1}([123]0|[012][1-9]|31)(\/|.|-){0,1}(19[0-9]{2}|2[0-9]{3})([ ]{0,1}([01][0-9]|2[0-3])[:]{0,1}([0-5][0-9])[:]{0,1}([0-5][0-9]){0,1}){0,1}$/g).test(value));
+                    return (new RegExp(/^(0[1-9]|1[012])[.]([123]0|[012][1-9]|31)[.](19[0-9]{2}|2[0-9]{3})(([01][0-9]|2[0-3])([0-5][0-9]))$/g).test(value));
                 case "MMDD":
                     return (new RegExp(/^(0[1-9]|1[012])([123]0|[012][1-9]|31)$/g).test(value));
                 case "MM/DD":
@@ -325,7 +425,6 @@ export class CommonFuncDate {
                     return (new RegExp(/^(0[1-9]|1[012])[-]([123]0|[012][1-9]|31)$/g).test(value));
                 case "MM.DD":
                     return (new RegExp(/^(0[1-9]|1[012])[-]([123]0|[012][1-9]|31)$/g).test(value));
-
                 case "DDMM":
                     return (new RegExp(/^([123]0|[012][1-9]|31)(0[1-9]|1[012])$/g).test(value));
                 case "DD/MM":
@@ -358,7 +457,6 @@ export class CommonFuncDate {
                     return (new RegExp(/^([1-9])[-]([123]0|[012][1-9]|31)$/g).test(value));
                 case "M.DD":
                     return (new RegExp(/^([1-9])[.]([123]0|[012][1-9]|31)$/g).test(value));
-
                 case "DDM":
                     return (new RegExp(/^([1-9])([123]0|[012][1-9]|31)$/g).test(value));
                 case "DD/M":
@@ -373,41 +471,41 @@ export class CommonFuncDate {
     }
 
     extracDateStr(value: string) {
-        if (value == null || value == "" ) return;
-        for(let i = 0 ; i < this.patternDate.length; i++){
-            if(this.isDateWithFormat(value,this.patternDate[i])){
+        if (value == null || value == "") return;
+        for (let i = 0; i < this.patternDate.length; i++) {
+            if (this.isDateWithFormat(value, this.patternDate[i])) {
                 let res = {
-                    date : true,
-                    format : this.patternDate[i],
-                    year:'',
-                    month:'',
-                    day:'',
-                    hour:'',
-                    minute:'',
-                    second:''
+                    date: true,
+                    format: this.patternDate[i],
+                    year: '',
+                    month: '',
+                    day: '',
+                    hour: '',
+                    minute: '',
+                    second: ''
                 }
                 let iYear = this.patternDate[i].indexOf('YYYY'),
-                iMonth = this.patternDate[i].indexOf('MM'),
-                iM = this.patternDate[i].indexOf('M'),
-                iday = this.patternDate[i].indexOf('DD'),
-                iD = this.patternDate[i].indexOf('D'),
-                ihour = this.patternDate[i].indexOf('HH'),
-                iminute = this.patternDate[i].indexOf('MI'),
-                isecond = this.patternDate[i].indexOf('SS');
-                if(iYear > -1) res.year = value.substring(iYear,iYear+4);
-                if(iMonth > -1) res.month = value.substring(iMonth,iMonth+2);
-                if(iday > -1) res.day = value.substring(iday,iday+2);
-                if(ihour > -1) res.hour = value.substring(ihour,ihour+2);
-                if(iminute > -1) res.minute = value.substring(iminute,iminute+2);
-                if(isecond > -1) res.second = value.substring(isecond,isecond+2);
-                if(iMonth == -1 && iM > -1) res.month = '0'+value.substring(iM,iM+1);
-                if(iday == -1 && iD > -1) res.day = '0'+value.substring(iD,iD+1);
-                if(res.month != "" && res.month == '02'){
-                    if(res.day > "29" && res.year != "") return false;
-                    if(res.year != "" && !this.isLeapYear(res.year) && res.day == "29") return false;
-                    if(res.day > "28") return false;
+                    iMonth = this.patternDate[i].indexOf('MM'),
+                    iM = this.patternDate[i].indexOf('M'),
+                    iday = this.patternDate[i].indexOf('DD'),
+                    iD = this.patternDate[i].indexOf('D'),
+                    ihour = this.patternDate[i].indexOf('HH'),
+                    iminute = this.patternDate[i].indexOf('MI'),
+                    isecond = this.patternDate[i].indexOf('SS');
+                if (iYear > -1) res.year = value.substring(iYear, iYear + 4);
+                if (iMonth > -1) res.month = value.substring(iMonth, iMonth + 2);
+                if (iday > -1) res.day = value.substring(iday, iday + 2);
+                if (ihour > -1) res.hour = value.substring(ihour, ihour + 2);
+                if (iminute > -1) res.minute = value.substring(iminute, iminute + 2);
+                if (isecond > -1) res.second = value.substring(isecond, isecond + 2);
+                if (iMonth == -1 && iM > -1) res.month = '0' + value.substring(iM, iM + 1);
+                if (iday == -1 && iD > -1) res.day = '0' + value.substring(iD, iD + 1);
+                if (res.month != "" && res.month == '02') {
+                    if (res.day > "29" && res.year != "") return false;
+                    if (res.year != "" && !this.isLeapYear(res.year) && res.day == "29") return false;
+                    if (res.day > "28") return false;
                 }
-                if(["04","06","09","11","4","6","9",4,6,9,11].indexOf(res.month) > -1 && ["31",31].indexOf(res.day) > -1) return false;
+                if (["04", "06", "09", "11", "4", "6", "9", 4, 6, 9, 11].indexOf(res.month) > -1 && ["31", 31].indexOf(res.day) > -1) return false;
                 return res;
             }
         }
@@ -552,10 +650,10 @@ export class CommonFuncDate {
     };
 
     isLeapYear(year: any) {
-        if(isNaN(Number(year))){
+        if (isNaN(Number(year))) {
             throw 'not year !';
         }
-        
+
         return (((+year % 4 === 0) && (+year % 100 !== 0)) || (+year % 400 === 0));
     }
 
@@ -565,7 +663,7 @@ export class CommonFuncDate {
     }
 
     dateStrFormat(date: string, pattern = "mm/dd") {
-        if(this.patternDate.indexOf(pattern.toUpperCase()) == -1){
+        if (this.patternDate.indexOf(pattern.toUpperCase()) == -1) {
             throw 'dont suport this pattern !';
         }
         if (date == null || date == "") {
@@ -573,16 +671,16 @@ export class CommonFuncDate {
         };
         pattern = pattern.toLowerCase();
         let extractDate = this.extracDateStr(date);
-        if(extractDate){
+        if (extractDate) {
             let dateFm = pattern;
-            dateFm = dateFm.replace('yyyy',extractDate.year);
-            dateFm = dateFm.replace('mm',extractDate.month);
-            dateFm = dateFm.replace('dd',extractDate.day);
-            dateFm = dateFm.replace('hh',extractDate.hour);
-            dateFm = dateFm.replace('mi',extractDate.minute);
-            dateFm = dateFm.replace('ss',extractDate.second)
+            dateFm = dateFm.replace('yyyy', extractDate.year);
+            dateFm = dateFm.replace('mm', extractDate.month);
+            dateFm = dateFm.replace('dd', extractDate.day);
+            dateFm = dateFm.replace('hh', extractDate.hour);
+            dateFm = dateFm.replace('mi', extractDate.minute);
+            dateFm = dateFm.replace('ss', extractDate.second)
             return dateFm;
-        }else{
+        } else {
             throw 'Invalid pattert !';
         }
     }
