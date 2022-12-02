@@ -118,6 +118,17 @@ extracDateStr(value)
 dateStrFormat(date: string, pattern = "mm/dd") 
         will return date format with pattern;
         => date = "20221212" return "12/12";
+
+shuffle(obj : Object[])
+        return shuffle element in obj
+        
+groupBy(data : object[],key : string)
+        return group element by key
+
+extractUniqueKey(data : object[],key : string,join? : string)
+        return list data unique by key
+        if join has value , it will return join string with list unique by key
+
 ```
 ### CommonFile
 

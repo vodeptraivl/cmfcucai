@@ -226,4 +226,17 @@ export class CommonFunction {
     isFileType(file: File | any , type :string){
         return new RegExp(`^.*(${type})$`).test(file.name);
     }
+
+    shuffle(obj : any){
+        if(obj == null || !Array.isArray(obj)){
+            throw 'only object array !';
+        }
+        let ci = obj.length,  ri;
+        while (ci != 0) {
+          ri = Math.floor(Math.random() * ci);
+          ci--;
+          [obj[ci], obj[ri]] = [obj[ri], obj[ci]];
+        }
+        return obj;
+    }
 }
